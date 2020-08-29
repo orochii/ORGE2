@@ -5,7 +5,7 @@ Cache::~Cache() {}
 
 void Cache::Init(SDL_Renderer* r) {
     renderer = r;
-    gFont = TTF_OpenFont( "Media/OrochiiFon.ttf", 28 );
+    gFont = TTF_OpenFont( "Media/OrochiiFon.ttf", 16 );
 }
 
 SDL_Texture* Cache::LoadTexture(std::string path) {

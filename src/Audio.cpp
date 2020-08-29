@@ -72,7 +72,7 @@ void Audio::StopMusic() {
 void Audio::OnLoopMusic() {
     if (currentMusic != nullptr) {
         Mix_PlayMusic(currentMusic, 0);
-        Mix_VolumeMusic(bgmVolume);
+        Mix_VolumeMusic((bgmVolume * playingBgmVol) / MAX_VOLUME);
         if (!fading) {
             // TODO: Set loop position.
         }
