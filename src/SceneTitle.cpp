@@ -10,7 +10,7 @@ SDL_Texture* Message;
 tmx_map* mapData;
 
 void SceneTitle::Init() {
-    //
+    // Location of map (?).
     std::string location = "Data/Maps/title.tmx";
     // TMX test
     mapLoaded = true;
