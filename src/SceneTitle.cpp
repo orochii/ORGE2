@@ -10,11 +10,12 @@ SDL_Texture* Message;
 tmx_map* mapData;
 
 void SceneTitle::Init() {
+    //
+    std::string location = "Data/Maps/title.tmx";
     // TMX test
     mapLoaded = true;
-    std::string location = "title.tmx";
     mapData = tmx_load(location.c_str());
-    if (mapData == NULL) mapLoaded = false;
+    if (!mapData) mapLoaded = false;
     //
     playerSprite = new Sprite();
     playerSprite->SetTexture(Game::GetCache()->LoadTexture("Characters/alice_charset.png"));
@@ -26,8 +27,10 @@ void SceneTitle::Init() {
     // Create text
     SDL_Color White = {255,255,255};
     // Draw line on screen for map load state
-    if (mapLoaded) surfaceMessage = TTF_RenderText_Solid(Game::GetCache()->gFont, "Map Loaded", White);
-    else surfaceMessage = TTF_RenderText_Solid(Game::GetCache()->gFont, "Map wasn't loaded", White);
+    std::string notification = "Map Loaded";
+    if (!mapLoaded) notification = "Map wasn't loaded";
+    //
+    surfaceMessage = TTF_RenderText_Solid(Game::GetCache()->gFont, notification.c_str(), White);
 }
 
 void SceneTitle::Update() {
